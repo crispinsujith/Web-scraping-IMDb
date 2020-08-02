@@ -15,7 +15,7 @@ response=requests.get(url1)
 soup1=BeautifulSoup(response.content,"lxml")
 body=soup1.select("div.lister.list.detail.sub-list")[0]
 indivs=body.select("div.lister-item.mode-advanced")
-name=[i.select("h3.lister-item-header")[0].get_text().strip().replace("\n","")[2:].replace(".","")[:-6].replace("(I)","") for i in indivs]
+name=[i.select("h3.lister-item-header")[0].get_text().strip().replace("\n","")[2:].replace(".","")[:-6].replace("(I)","").replace("(II)","").replace("(III)","") for i in indivs]
 para=[i.select("p.text-muted")[1].get_text().strip() for i in indivs]
 rating=[i.select("div.inline-block.ratings-imdb-rating strong")[0].get_text() for i in indivs]
 pages=np.arange(51,1001,50)
@@ -30,7 +30,7 @@ for i in pages:
     indivs=body.select("div.lister-item.mode-advanced")
     sleep(randint(2,6))
     for i in indivs:
-        name1.append(i.select("h3.lister-item-header")[0].get_text().strip().replace("\n","")[3:].replace(".","")[:-6].replace("00","").replace("(I)",""))
+        name1.append(i.select("h3.lister-item-header")[0].get_text().strip().replace("\n","")[3:].replace(".","")[:-6].replace("00","").replace("(I)","").replace("(II)","").replace("(III)",""))
         para1.append(i.select("p.text-muted")[1].get_text().strip())
         rating1.append(i.select("div.inline-block.ratings-imdb-rating strong")[0].get_text())
 final_name=name+name1
