@@ -36,6 +36,6 @@ for i in pages:
 final_name=name+name1
 final_para=para+para1
 final_rating=rating+rating1
-df=pd.DataFrame({"Movie Name":final_name,"IMDB Rating":final_rating,"Movie Summary":final_para})
+df=pd.DataFrame({"Movie Name":final_name,"IMDB Rating":final_rating,"Movie Summary":final_para},index=[indexx for indexx in range(1,len(final_name)+1)])
 df.to_csv("imdb_full_list.csv")
 df
